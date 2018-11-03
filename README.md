@@ -5,8 +5,6 @@ Wieloagentowe systemy decyzyjne 18Z.
 System zarządzania energią w inteligentnych budynkach.
 
 ### Uruchamianie
-Do uruchomienia potrzebna jest biblioteka [Jade](http://jade.tilab.com/download/jade/license/jade-download/). Należy ją dodać do projektu, a następnie uruchomić z parametrami:
-
-Main class: jade.Boot
-
-Program arguments: -gui city:utils.AgentCreator
+Do uruchomienia potrzebna jest biblioteka [Jade](http://jade.tilab.com/download/jade/license/jade-download/). Należy ją dodać do projektu (java 1.8), a następnie uruchomić z parametrami:
+* Main class: jade.Boot
+* Program arguments: -gui city:utils.AgentCreator

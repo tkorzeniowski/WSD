@@ -322,7 +322,7 @@
 <Look Height="-1" Width="-1" XCoordinate="335" YCoordinate="507"/>
 </EntityCell>
 <EntityCell IMemento.internal.id="38914" MotherDiagram="1795" WrappedEntity="6657">
-<Look Height="-1" Width="-1" XCoordinate="2568" YCoordinate="266"/>
+<Look Height="-1" Width="-1" XCoordinate="2618" YCoordinate="262"/>
 </EntityCell>
 <EntityCell IMemento.internal.id="50946" MotherDiagram="1283" WrappedEntity="50689">
 <Look Height="-1" Width="-1" XCoordinate="100" YCoordinate="370"/>
@@ -574,7 +574,7 @@
 <Look Height="-1" Width="-1" XCoordinate="342" YCoordinate="74"/>
 </EntityCell>
 <EntityCell IMemento.internal.id="39170" MotherDiagram="1795" WrappedEntity="7169">
-<Look Height="-1" Width="-1" XCoordinate="2808" YCoordinate="248"/>
+<Look Height="-1" Width="-1" XCoordinate="2855" YCoordinate="242"/>
 </EntityCell>
 <EntityCell IMemento.internal.id="51202" MotherDiagram="1795" WrappedEntity="50689">
 <Look Height="-1" Width="-1" XCoordinate="2145" YCoordinate="356"/>

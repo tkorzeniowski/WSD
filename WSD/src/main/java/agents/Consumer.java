@@ -45,34 +45,36 @@ public class Consumer extends Agent {
         providerPrice = ThreadLocalRandom.current().nextDouble(0.01, 1);
 
         /* find building and battery after starting */
-        addBehaviour(new WakerBehaviour(this, 2000) {
+        WakerBehaviour wb = new WakerBehaviour(this, 2000) {
             @Override
             protected void onWake() {
                 findBuilding(buildingName);
                 findBattery();
-
-                /* each consumer informs it's building of it's existence */
-                ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-                msg.setOntology(StatusType.DECLARE_CONSUMER.toString());
-                msg.addReceiver(buildingId);
-                send(msg);
             }
-        });
+        };
+        addBehaviour(wb);
 
         /* inform building of predicted demand for next period */
-        addBehaviour(new TickerBehaviour(this, 6000) {
+        TickerBehaviour tb = new TickerBehaviour(this, 10000) {
             @Override
             protected void onTick() {
                 predictDemand();
-                actualDemand = predictedDemand;
+                actualDemand += predictedDemand;
 
                 ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
                 msg.setContent(providerId + regex + actualDemand);
                 msg.setOntology(StatusType.OFFER.toString());
                 msg.addReceiver(buildingId);
                 send(msg);
+
+                if(this.getTickCount() % 3 == 0){
+                    logger.info("RESET");
+                    this.reset();
+                }
+
             }
-        });
+        };
+        addBehaviour(tb);
 
         /* this agent behaviour determines it's actions concerning incoming messages */
         addBehaviour(new CyclicBehaviour() {
@@ -107,6 +109,11 @@ public class Consumer extends Agent {
                     else if (msg.getOntology().equals(StatusType.REQUEST_MEDIUM.toString())){
                         actualDemand -= Double.parseDouble(msg.getContent());
                         informProvider();
+                    }
+                    else if(msg.getOntology().equals(StatusType.CONSUMER_CHARGING.toString())){
+                        logger.info("need more medium for car charging - " + Double.parseDouble(msg.getContent()));
+                        actualDemand += Double.parseDouble(msg.getContent());
+                        logger.info("actual demand - " + actualDemand);
                     }
                     else{
                         logger.info("message from" + msg.getSender() + " not understood");
@@ -219,8 +226,7 @@ public class Consumer extends Agent {
     /** actions before agent (sometimes unexpected) termination
      * */
     @Override
-    protected void takeDown()
-    {
+    protected void takeDown() {
         ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
         msg.setOntology(StatusType.CANCEL_CONSUMER.toString());
         msg.addReceiver(buildingId);

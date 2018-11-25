@@ -10,6 +10,8 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import messages.*;
 
@@ -24,6 +26,7 @@ public class Battery extends Agent {
     private double currentCapacity, priceLB, priceUB;
     private BatteryState batteryState;
     private String buildingName;
+    private List<Offer> reservedMedium;
 
     private Logger logger;
 
@@ -60,6 +63,7 @@ public class Battery extends Agent {
                 ACLMessage msg = receive();
                 if(msg != null){
                     if(msg.getOntology().equals(StatusType.BATTERY_CAPACITY.toString())){
+                        reservedMedium = null; // clear list
                         predictCapacity();
                         informBuilding();
                         logger.info("informing " + msg.getSender().getLocalName() + " of state and capacity");
@@ -87,6 +91,22 @@ public class Battery extends Agent {
                         send(message);
 
                         updateCapacityInfo();
+
+                    }
+                    else if(msg.getOntology().equals(StatusType.MEDIUM_NEEDED.toString())){
+                        if(msg.getSender().equals(buildingId)){
+                            if(msg.getContent() == null){
+                                logger.info("reserving medium for my building");
+                                reserveMedium(false);
+                            } else if(msg.getContent().equals(regex)){
+                                logger.info("reserving medium for other building");
+                                reserveMedium(true);
+                            } else {
+                                receiveMedium(msg);
+                            }
+                        } else{
+                            logger.warn(msg.getSender().getLocalName() + " won't get anything from me");
+                        }
 
                     }
                     else{
@@ -204,6 +224,74 @@ public class Battery extends Agent {
             ex.printStackTrace();
         }
     }
+
+    /** reserve medium for building (default or other building somewhere)
+     * @param otherBuilding flag indicating if medium is being reserved for other building than battery's default */
+    private void reserveMedium(boolean otherBuilding){
+        if(reservedMedium == null){
+            reservedMedium = new LinkedList<>();
+        }
+
+        double price = 0;
+        double excess = getExcess();
+
+        if(otherBuilding){ // reserve medium for other building
+            price = ThreadLocalRandom.current().nextDouble(priceLB, priceUB);
+        }
+        reservedMedium.add(new Offer(buildingId, null, excess, price));
+
+        currentCapacity -= (excess/totalCapacity);
+
+        ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+        msg.addReceiver(buildingId);
+        msg.setOntology(StatusType.MEDIUM_NEEDED.toString());
+        msg.setContent(String.valueOf(excess) + regex + false + regex + price);
+        send(msg);
+    }
+
+    /** get excessive amount of medium based on battery state
+     * @return amount of medium*/
+    private double getExcess(){
+        double percent = 0;
+        updateCapacityInfo();
+
+        if(batteryState.equals(BatteryState.REQUEST_MEDIUM)){
+            percent = 0.01;
+        } else if( batteryState.equals(BatteryState.STORE_MEDIUM)){
+            percent = 0.02;
+        } else if (batteryState.equals(BatteryState.SEND_MEDIUM)){
+            percent = 0.05;
+        } else {
+            percent = 0.1;
+        }
+
+        if(currentCapacity > percent){
+            return totalCapacity*percent;
+        } else{
+            return 0;
+        }
+    }
+
+    /** sender returns excess of medium previously reserved
+     * @param message message containing information of medium*/
+    private void receiveMedium(ACLMessage message){
+        String[] parts = message.getContent().split(regex);
+
+        logger.info(message.getSender().getLocalName() + " returned medium - " + Double.parseDouble(parts[0]));
+
+        if(Boolean.valueOf(parts[1]) == true){
+            currentCapacity += (Double.parseDouble(parts[0])/totalCapacity);
+        }
+
+        logger.info("capacity increased by " + Double.parseDouble(parts[0])/totalCapacity);
+
+        for(Offer o : reservedMedium){
+            if(o.getAid().equals(message.getSender())){
+                reservedMedium.remove(o);
+            }
+        }
+    }
+
 
     /** actions before agent (sometimes unexpected) termination
      * */

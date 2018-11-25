@@ -70,12 +70,7 @@ public class Building extends Agent {
             public void action() {
                 ACLMessage msg = receive();
                 if(msg != null){
-
-                    if(msg.getOntology().equals(StatusType.DECLARE_CONSUMER.toString())){
-                        logger.info("accepting consumer - " + msg.getSender().getLocalName());
-                        ++consumersCount;
-                    }
-                    else if (msg.getOntology().equals(StatusType.CANCEL_CONSUMER.toString())){
+                    if (msg.getOntology().equals(StatusType.CANCEL_CONSUMER.toString())){
                         logger.info("canceling consumer - " + msg.getSender().getLocalName());
                         --consumersCount;
                     }
@@ -94,6 +89,9 @@ public class Building extends Agent {
                         logger.info("current battery capacity - " + batteryCapacity + " (" + batteryState + ")");
                     }
                     else if(msg.getOntology().equals(StatusType.GET_BATTERY.toString())){
+                        logger.info("accepting consumer - " + msg.getSender().getLocalName());
+                        ++consumersCount;
+
                         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
                         message.setOntology(StatusType.GET_BATTERY.toString());
                         if(batteryId != null) {
@@ -123,27 +121,37 @@ public class Building extends Agent {
 
 
         /* get parameters and create some agent state*/
-        addBehaviour(new TickerBehaviour(this, 5000) {
+        TickerBehaviour tbPrediction = new TickerBehaviour(this, 9000) {
             @Override
             protected void onTick() {
                 predictProduction();
                 getBatteryState();
+                if(this.getTickCount() % 3 == 0){
+                    logger.info("RESET");
+                    this.reset();
+                }
             }
-        });
+        };
+        addBehaviour(tbPrediction);
 
         /* check if all consumers sent offers, start creating supply plan regardless */
-        addBehaviour(new TickerBehaviour(this, 6700) {
+        TickerBehaviour tbSupplyPlan = new TickerBehaviour(this, 11000) {
             @Override
             protected void onTick() {
                 if(supplyPlanNotStarted){
                     createSupplyPlan();
                 }
+                if(this.getTickCount() % 3 == 0){
+                    logger.info("RESET");
+                    this.reset();
+                }
             }
-        });
+        };
+        addBehaviour(tbSupplyPlan);
 
         /* before the end of period send medium to consumers, give excessive production to battery,
         inform providers of maximum demand they can expect and clean agent state before next period */
-        addBehaviour(new TickerBehaviour(this, 7500) {
+        TickerBehaviour tbSendMedium = new TickerBehaviour(this, 13000) {
             @Override
             protected void onTick() {
                 sendMedium();
@@ -157,8 +165,15 @@ public class Building extends Agent {
 
                 informProviders();
                 cleanUp();
+
+                if(this.getTickCount() % 3 == 0){
+                    logger.info("RESET");
+                    this.reset();
+                }
+
             }
-        });
+        };
+        addBehaviour(tbSendMedium);
 
     }
 
@@ -314,7 +329,8 @@ public class Building extends Agent {
         logger.info("selecting offers");
 
         if(buildingOffers != null) {
-            buildingOffers.sort(Comparator.comparingDouble(Offer::getPrice));
+            buildingOffers.sort(Comparator.comparingDouble(Offer::getPrice)); // sort offers by price
+
             for (Offer o : buildingOffers) {
 
                 ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
@@ -449,6 +465,15 @@ public class Building extends Agent {
 
         }
 
+        if(batteryId != null) { // ask battery as well
+            ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+            msg.setOntology(StatusType.MEDIUM_NEEDED.toString());
+            //msg.setContent(regex); // send anything
+            msg.addReceiver(batteryId);
+            send(msg);
+
+            ++neighboursCount;
+        }
     }
 
     /** register services that building provide

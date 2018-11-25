@@ -5,8 +5,6 @@ package messages;
 public enum StatusType {
     /** change consumer's providerId */
     UPDATE_PROVIDER,
-    /** inform building that consumer exists */
-    DECLARE_CONSUMER,
     /** if consumer fails, informs building of it */
     CANCEL_CONSUMER,
     /** consumer sends demand to building as an offer */
@@ -27,4 +25,6 @@ public enum StatusType {
     GET_PRICE,
     /** consumer requests medium from battery */
     REQUEST_MEDIUM,
+    /** consumer charges car from battery */
+    CONSUMER_CHARGING,
 }

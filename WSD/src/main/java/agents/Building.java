@@ -2,8 +2,7 @@ package agents;
 
 import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.TickerBehaviour;
+import jade.core.behaviours.*;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
@@ -28,6 +27,7 @@ public class Building extends Agent {
     private List<String> estateIds, services;
     private BatteryState batteryState;
     private boolean negotiationsStarted = false, supplyPlanNotStarted = true;
+    private long startTime;
 
     private Logger logger;
 
@@ -120,40 +120,41 @@ public class Building extends Agent {
         });
 
 
-        /* get parameters and create some agent state*/
-        TickerBehaviour tbPrediction = new TickerBehaviour(this, 9000) {
+        startTime = System.currentTimeMillis();
+
+        SequentialBehaviour behaviour = new SequentialBehaviour(this){
             @Override
-            protected void onTick() {
-                predictProduction();
-                getBatteryState();
-                if(this.getTickCount() % 3 == 0){
-                    logger.info("RESET");
-                    this.reset();
-                }
+            public int onEnd(){
+                reset();    // cyclic behaviour
+                getAgent().addBehaviour(this); // add this sequence
+                return super.onEnd();
             }
         };
-        addBehaviour(tbPrediction);
+
+        /* get parameters and create some agent state*/
+        behaviour.addSubBehaviour(new WakerBehaviour(this, 1000) {
+            @Override
+            protected void onWake() {
+                predictProduction();
+                getBatteryState();
+            }
+        });
 
         /* check if all consumers sent offers, start creating supply plan regardless */
-        TickerBehaviour tbSupplyPlan = new TickerBehaviour(this, 11000) {
+        behaviour.addSubBehaviour(new WakerBehaviour(this, 2500) {
             @Override
-            protected void onTick() {
+            protected void onWake() {
                 if(supplyPlanNotStarted){
                     createSupplyPlan();
                 }
-                if(this.getTickCount() % 3 == 0){
-                    logger.info("RESET");
-                    this.reset();
-                }
             }
-        };
-        addBehaviour(tbSupplyPlan);
+        });
 
         /* before the end of period send medium to consumers, give excessive production to battery,
         inform providers of maximum demand they can expect and clean agent state before next period */
-        TickerBehaviour tbSendMedium = new TickerBehaviour(this, 13000) {
+        behaviour.addSubBehaviour(new WakerBehaviour(this, 4000) {
             @Override
-            protected void onTick() {
+            protected void onWake() {
                 sendMedium();
                 logger.info("medium sent to consumers");
 
@@ -165,15 +166,25 @@ public class Building extends Agent {
 
                 informProviders();
                 cleanUp();
-
-                if(this.getTickCount() % 3 == 0){
-                    logger.info("RESET");
-                    this.reset();
-                }
-
             }
-        };
-        addBehaviour(tbSendMedium);
+        });
+
+        behaviour.addSubBehaviour(new TickerBehaviour(this, 200) {
+            @Override
+            protected void onTick() {
+                long currentTime = System.currentTimeMillis();
+                if(currentTime - startTime >= 10000){   // busy waiting
+                    stop();
+                }
+            }
+        });
+
+        addBehaviour(new WakerBehaviour(this, 8000) {
+            @Override
+            protected void onWake() {
+                addBehaviour(behaviour); // start sequence with delay
+            }
+        });
 
     }
 
@@ -228,7 +239,6 @@ public class Building extends Agent {
                 startNegotiations();
             }
         }
-
 
     }
 
@@ -433,7 +443,6 @@ public class Building extends Agent {
         }
 
     }
-
 
     /** find all neighbours in DF and ask them for medium
      * */

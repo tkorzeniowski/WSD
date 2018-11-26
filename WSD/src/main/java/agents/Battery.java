@@ -49,7 +49,7 @@ public class Battery extends Agent {
         currentCapacity = 0.7; // for tests
         buildingName = parts[1]; // parts[0] - batteryId used to create agent
 
-        /* */
+        /* find building id */
         addBehaviour(new WakerBehaviour(this, 1000) {
             @Override
             protected void onWake() {

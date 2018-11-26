@@ -45,17 +45,16 @@ public class Consumer extends Agent {
         providerPrice = ThreadLocalRandom.current().nextDouble(0.01, 1);
 
         /* find building and battery after starting */
-        WakerBehaviour wb = new WakerBehaviour(this, 2000) {
+        addBehaviour(new WakerBehaviour(this, 2000) {
             @Override
             protected void onWake() {
                 findBuilding(buildingName);
                 findBattery();
             }
-        };
-        addBehaviour(wb);
+        });
 
         /* inform building of predicted demand for next period */
-        TickerBehaviour tb = new TickerBehaviour(this, 10000) {
+        addBehaviour(new TickerBehaviour(this, 10000) {
             @Override
             protected void onTick() {
                 predictDemand();
@@ -66,15 +65,8 @@ public class Consumer extends Agent {
                 msg.setOntology(StatusType.OFFER.toString());
                 msg.addReceiver(buildingId);
                 send(msg);
-
-                if(this.getTickCount() % 3 == 0){
-                    logger.info("RESET");
-                    this.reset();
-                }
-
             }
-        };
-        addBehaviour(tb);
+        });
 
         /* this agent behaviour determines it's actions concerning incoming messages */
         addBehaviour(new CyclicBehaviour() {

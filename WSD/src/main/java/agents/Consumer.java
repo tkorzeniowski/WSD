@@ -11,6 +11,7 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 
+import java.io.*;
 import java.util.concurrent.ThreadLocalRandom;
 import messages.*;
 import org.slf4j.Logger;
@@ -214,6 +215,42 @@ public class Consumer extends Agent {
         msg.setContent(providerId);
         send(msg);
     }
+
+    /*
+    // save agent state (snapshot)
+    private void saveAgentState(){
+        ClassLoader classLoader = getClass().getClassLoader();
+        String path  = classLoader.getResource("").getPath() + getLocalName();
+
+        try {
+            FileOutputStream fout = new FileOutputStream(path);
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+            oos.writeObject(this);
+
+            logger.info("state saved");
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
+    }
+
+    // restore agent state (last saved snapshot if exists)
+    private void restoreAgent(){
+        ClassLoader classLoader = getClass().getClassLoader();
+        String path  = classLoader.getResource("").getPath() + getLocalName();
+
+        File file = new File(path);
+        if(file.exists() && !file.isDirectory()) {
+            try{
+                FileInputStream fis = new FileInputStream(file);
+                this.restore(fis);
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+    */
 
     /** actions before agent (sometimes unexpected) termination
      * */

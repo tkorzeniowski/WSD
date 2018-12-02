@@ -1,0 +1,6 @@
+konsument1;budynek1;dostawca1;10
+konsument2;budynek1;dostawca1;10
+konsument3;budynek1;dostawca2;5
+konsument4;budynek2;dostawca2;20
+konsument5;budynek2;dostawca2;25
+konsument6;budynek3;dostawca1;30

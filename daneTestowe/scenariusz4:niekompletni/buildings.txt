@@ -1,0 +1,4 @@
+budynek1;0;osiedle1-osiedle2
+budynek2;30;osiedle1
+budynek3;0;osiedle1-osiedle3
+budynek4;400;osiedle1-osiedle3

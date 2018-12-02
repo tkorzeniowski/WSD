@@ -1,0 +1,2 @@
+akumulator1;budynek1;50
+akumulator2;budynek2;70

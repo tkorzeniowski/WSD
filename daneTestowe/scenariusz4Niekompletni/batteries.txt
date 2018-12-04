@@ -1,1 +1,2 @@
 akumulator1;budynek1;50
+akumulator4;budynek4;60

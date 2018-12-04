@@ -1,2 +1,3 @@
-akumulator1;budynek1;50
-akumulator2;budynek2;70
+akumulator1;budynek1;20
+akumulator2;budynek2;30
+akumulator3;budynek3;10

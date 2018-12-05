@@ -1,3 +1,4 @@
 budynek1;30;osiedle1-osiedle2
-budynek2;30;osiedle1
-budynek3;24;osiedle1-osiedle3
+budynek2;30;osiedle2-osiedle3
+budynek3;24;osiedle3-osiedle4
+budynek4;24;osiedle1-osiedle4

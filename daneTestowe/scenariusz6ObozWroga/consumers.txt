@@ -4,3 +4,5 @@ konsument3;budynek1;dostawca2;13
 konsument4;budynek2;dostawca2;14
 konsument5;budynek2;dostawca2;15
 konsument6;budynek3;dostawca1;16
+konsument7;budynek4;dostawca2;17
+konsument8;budynek4;dostawca1;18

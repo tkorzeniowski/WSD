@@ -84,7 +84,7 @@ public class Consumer extends Agent {
                         actualDemand -= Double.parseDouble(msg.getContent());
                         logger.info("received supply, current demand - " + actualDemand);
 
-                        if(actualDemand > 0){
+                        if(actualDemand > 0 && batteryId!=null){
                             ACLMessage message = new ACLMessage(ACLMessage.INFORM);
                             message.addReceiver(batteryId);
                             message.setOntology(StatusType.GET_PRICE.toString());
@@ -203,7 +203,7 @@ public class Consumer extends Agent {
 
     private void informProvider(){
         logger.info("need " + actualDemand + " medium from " + providerId);
-        //actualDemand = 0;
+        actualDemand = 0;
     }
 
     /** when provider changes, building needs to be informed

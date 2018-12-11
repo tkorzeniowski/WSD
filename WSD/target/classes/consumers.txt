@@ -1,4 +1,0 @@
-konsument1;budynek1;dostawca1;5
-konsument2;budynek1;dostawca1;7
-konsument3;budynek1;dostawca2;14
-konsument4;budynek2;dostawca2;12

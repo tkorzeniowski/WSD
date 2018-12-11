@@ -158,6 +158,8 @@ public class Building extends Agent {
                 sendMedium();
                 logger.info("medium sent to consumers");
 
+                //excessiveProduction = getExcess();
+
                 ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
                 msg.addReceiver(batteryId);
                 msg.setContent(String.valueOf(excessiveProduction));
@@ -275,7 +277,11 @@ public class Building extends Agent {
      * @param sender building asking for medium*/
     private void reserveMedium(AID sender){
         double excessiveProd = getExcess();
+        if(excessiveProd <= 0){
+            excessiveProd = 0;
+        }
         logger.info("reserving medium for " + sender.getLocalName() + " - " + excessiveProd);
+        actualProduction -= excessiveProd;
 
         ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
         msg.addReceiver(sender);
@@ -326,7 +332,9 @@ public class Building extends Agent {
                 ++i;
             }
 
-            logger.info(message.getSender().getLocalName() + " returned medium - " + Double.parseDouble(parts[0]));
+            Double returnedMediumQuantity = Double.parseDouble(parts[0]);
+            logger.info(message.getSender().getLocalName() + " returned medium - " + returnedMediumQuantity);
+            actualProduction += returnedMediumQuantity;
         }
 
         createSupplyPlan(); // check if supply plan can be created now

@@ -1,2 +1,0 @@
-budynek1;28;osiedle1-osiedle2
-budynek2;32;osiedle2-osiedle3

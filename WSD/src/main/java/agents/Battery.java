@@ -81,13 +81,22 @@ public class Battery extends Agent {
                     else if(msg.getOntology().equals(StatusType.REQUEST_MEDIUM.toString())){
 
                         String[] parts = msg.getContent().split(regex);
+                        Double mediumQuanitity = Double.parseDouble(parts[0]);
 
-                        currentCapacity -= Double.parseDouble(parts[0])/totalCapacity;
                         // parts[1] - price for medium determined in GET_PRICE negotiations, price might have changed since then but consumer accepted old price
                         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
                         message.addReceiver(msg.getSender());
                         message.setOntology(StatusType.REQUEST_MEDIUM.toString());
-                        message.setContent(parts[0]);
+
+                        if(mediumQuanitity <= 0.05*totalCapacity){
+                            currentCapacity -= mediumQuanitity/totalCapacity;
+                            message.setContent(parts[0]);
+                        }else{
+                            currentCapacity -= 0.05;
+                            Double quantity = 0.05*totalCapacity;
+                            message.setContent(quantity.toString());
+                        }
+
                         send(message);
 
                         updateCapacityInfo();

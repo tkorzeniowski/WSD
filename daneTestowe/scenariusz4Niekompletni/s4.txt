@@ -1,0 +1,290 @@
+"C:\Program Files\Java\jdk1.8.0_111\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2018.3\lib\idea_rt.jar=56292:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2018.3\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_111\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\rt.jar;C:\WSD\WSD\WSD\target\classes;C:\Users\Jakub\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar;C:\Users\Jakub\.m2\repository\org\slf4j\slf4j-log4j12\1.7.25\slf4j-log4j12-1.7.25.jar;C:\Users\Jakub\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\Jakub\Downloads\Nowy folder\jade\lib\jade.jar" jade.Boot -gui city:utils.AgentCreator
+sty 02, 2019 10:52:18 PM jade.core.Runtime beginContainer
+INFO: ----------------------------------
+    This is JADE 4.5.0 - revision 6825 of 23-05-2017 10:06:04
+    downloaded in Open Source, under LGPL restrictions,
+    at http://jade.tilab.com/
+----------------------------------------
+sty 02, 2019 10:52:18 PM jade.imtp.leap.LEAPIMTPManager initialize
+INFO: Listening for intra-platform commands on address:
+- jicp://192.168.1.6:1099
+
+sty 02, 2019 10:52:19 PM jade.core.BaseService init
+INFO: Service jade.core.management.AgentManagement initialized
+sty 02, 2019 10:52:19 PM jade.core.BaseService init
+INFO: Service jade.core.messaging.Messaging initialized
+sty 02, 2019 10:52:19 PM jade.core.BaseService init
+INFO: Service jade.core.resource.ResourceManagement initialized
+sty 02, 2019 10:52:19 PM jade.core.BaseService init
+INFO: Service jade.core.mobility.AgentMobility initialized
+sty 02, 2019 10:52:19 PM jade.core.BaseService init
+INFO: Service jade.core.event.Notification initialized
+sty 02, 2019 10:52:24 PM jade.mtp.http.HTTPServer <init>
+INFO: HTTP-MTP Using XML parser com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser
+sty 02, 2019 10:52:24 PM jade.core.messaging.MessagingService boot
+INFO: MTP addresses:
+http://DESKTOP-D7AM2R7:7778/acc
+sty 02, 2019 10:52:24 PM jade.core.AgentContainerImpl joinPlatform
+INFO: --------------------------------------
+Agent container Main-Container@192.168.1.6 is ready.
+--------------------------------------------
+2019-01-02 22:52:24.390 INFO  budynek1: started
+SLF4J: A number (12) of logging calls during the initialization phase have been intercepted and are
+SLF4J: now being replayed. These are subject to the filtering rules of the underlying logging system.
+SLF4J: See also http://www.slf4j.org/codes.html#replay
+2019-01-02 22:52:24.405 INFO  konsument2: started
+2019-01-02 22:52:24.408 INFO  konsument3: started
+2019-01-02 22:52:24.408 INFO  konsument5: started
+2019-01-02 22:52:24.408 INFO  budynek3: started
+2019-01-02 22:52:24.408 INFO  budynek2: started
+2019-01-02 22:52:24.408 INFO  konsument4: started
+2019-01-02 22:52:24.409 INFO  konsument1: started
+2019-01-02 22:52:24.420 INFO  konsument7: started
+2019-01-02 22:52:24.426 INFO  konsument6: started
+2019-01-02 22:52:24.520 INFO  budynek4: started
+2019-01-02 22:52:25.537 INFO  budynek1: registering battery - akumulator1
+2019-01-02 22:52:25.555 INFO  budynek4: registering battery - akumulator4
+2019-01-02 22:52:26.439 INFO  budynek2: accepting consumer - konsument4
+2019-01-02 22:52:26.449 INFO  budynek1: accepting consumer - konsument3
+2019-01-02 22:52:26.460 INFO  budynek2: accepting consumer - konsument5
+2019-01-02 22:52:26.466 INFO  budynek1: accepting consumer - konsument1
+2019-01-02 22:52:26.474 INFO  budynek1: accepting consumer - konsument2
+2019-01-02 22:52:26.486 INFO  budynek4: accepting consumer - konsument7
+2019-01-02 22:52:26.490 INFO  budynek3: accepting consumer - konsument6
+2019-01-02 22:52:26.496 INFO  konsument3: my battery akumulator1
+2019-01-02 22:52:26.500 INFO  konsument1: my battery akumulator1
+2019-01-02 22:52:26.503 INFO  konsument2: my battery akumulator1
+2019-01-02 22:52:26.507 INFO  konsument7: my battery akumulator4
+2019-01-02 22:52:33.494 INFO  akumulator1: informing budynek1 of state and capacity
+2019-01-02 22:52:33.494 INFO  budynek1: current battery capacity - 0.667363017738145 (SEND_MEDIUM)
+2019-01-02 22:52:33.553 INFO  akumulator4: informing budynek4 of state and capacity
+2019-01-02 22:52:33.554 INFO  budynek4: current battery capacity - 0.6834586006576452 (SEND_MEDIUM)
+2019-01-02 22:52:34.412 INFO  budynek1: received offer from konsument3 - dostawca2;13.0
+2019-01-02 22:52:34.427 INFO  budynek2: received offer from konsument5 - dostawca2;15.0
+2019-01-02 22:52:34.428 INFO  budynek4: received offer from konsument7 - dostawca1;17.0
+2019-01-02 22:52:34.428 INFO  budynek2: received offer from konsument4 - dostawca2;14.0
+2019-01-02 22:52:34.429 INFO  budynek4: preparing supply plan
+2019-01-02 22:52:34.428 INFO  budynek1: received offer from konsument2 - dostawca1;12.0
+2019-01-02 22:52:34.429 INFO  budynek4: checking battery state
+2019-01-02 22:52:34.429 INFO  budynek2: preparing supply plan
+2019-01-02 22:52:34.430 INFO  budynek1: received offer from konsument1 - dostawca1;11.0
+2019-01-02 22:52:34.431 INFO  budynek1: preparing supply plan
+2019-01-02 22:52:34.431 INFO  budynek1: checking battery state
+2019-01-02 22:52:34.431 INFO  budynek1: starting negotiations
+2019-01-02 22:52:34.442 INFO  budynek3: received offer from konsument6 - dostawca1;16.0
+2019-01-02 22:52:34.442 INFO  budynek3: preparing supply plan
+2019-01-02 22:52:34.443 INFO  budynek3: starting negotiations
+2019-01-02 22:52:34.459 INFO  budynek2: reserving medium for budynek1 - 1.0
+2019-01-02 22:52:34.460 INFO  budynek4: reserving medium for budynek1 - 63.0
+2019-01-02 22:52:34.469 INFO  budynek2: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:34.470 INFO  budynek4: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:34.476 INFO  akumulator1: reserving medium for my building
+2019-01-02 22:52:34.476 INFO  budynek1: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:34.478 INFO  budynek1: budynek4 send medium - 63.0, price - 0.17781668136995318
+2019-01-02 22:52:34.478 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:34.478 INFO  budynek1: budynek2 send medium - 1.0, price - 0.731538001127851
+2019-01-02 22:52:34.479 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:34.479 INFO  budynek1: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:34.480 INFO  budynek1: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:34.481 INFO  budynek4: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:34.481 INFO  budynek3: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:34.481 INFO  budynek1: akumulator1 send medium - 2.5, price - 0.0
+2019-01-02 22:52:34.481 INFO  budynek3: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:34.482 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:34.482 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:34.482 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:34.483 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:34.483 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:34.483 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:34.483 INFO  budynek1: selecting offers
+2019-01-02 22:52:34.483 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:34.483 INFO  budynek3: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:34.484 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:34.485 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:34.485 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:34.485 INFO  budynek3: selecting offers
+2019-01-02 22:52:34.491 INFO  akumulator1: budynek1 returned medium - 0.0
+2019-01-02 22:52:34.492 INFO  budynek4: budynek1 reserved medium - 33.5
+2019-01-02 22:52:34.492 INFO  akumulator1: capacity increased by 0.0
+2019-01-02 22:52:34.492 INFO  budynek2: budynek1 reserved medium - 0.0
+2019-01-02 22:52:34.492 INFO  budynek4: budynek1 returned medium - 29.5
+2019-01-02 22:52:34.492 INFO  budynek2: budynek1 returned medium - 1.0
+2019-01-02 22:52:34.492 INFO  budynek4: checking battery state
+2019-01-02 22:52:40.010 INFO  budynek1: sending medium to consumers
+2019-01-02 22:52:40.011 INFO  konsument3: received supply, current demand - 1.0
+2019-01-02 22:52:40.011 INFO  budynek1: medium sent to consumers
+2019-01-02 22:52:40.012 INFO  konsument1: received supply, current demand - 0.0
+2019-01-02 22:52:40.011 INFO  konsument2: received supply, current demand - 0.0
+2019-01-02 22:52:40.013 INFO  konsument1: need 0.0 medium from dostawca1
+2019-01-02 22:52:40.013 INFO  budynek1: sending demand to provider dostawca2 1.0
+2019-01-02 22:52:40.014 INFO  akumulator1: charging up - 0.02
+2019-01-02 22:52:40.013 INFO  konsument2: need 0.0 medium from dostawca1
+2019-01-02 22:52:40.014 INFO  konsument3: battery price = 0.1663758203473038, provider price 0.5585577345782711
+2019-01-02 22:52:40.014 INFO  budynek1: sending demand to provider dostawca1 0.0
+2019-01-02 22:52:40.015 INFO  konsument3: getting shortage from battery
+2019-01-02 22:52:40.018 INFO  konsument3: need 0.0 medium from dostawca2
+2019-01-02 22:52:40.041 INFO  budynek3: sending medium to consumers
+2019-01-02 22:52:40.041 INFO  budynek3: medium sent to consumers
+2019-01-02 22:52:40.042 INFO  budynek3: sending demand to provider dostawca1 16.0
+2019-01-02 22:52:40.042 INFO  konsument6: received supply, current demand - 16.0
+2019-01-02 22:52:40.043 INFO  konsument6: need 16.0 medium from dostawca1
+2019-01-02 22:52:40.056 INFO  budynek2: sending medium to consumers
+2019-01-02 22:52:40.057 INFO  budynek2: medium sent to consumers
+2019-01-02 22:52:40.058 INFO  konsument4: received supply, current demand - 0.0
+2019-01-02 22:52:40.058 INFO  konsument5: received supply, current demand - 0.0
+2019-01-02 22:52:40.059 INFO  konsument4: need 0.0 medium from dostawca2
+2019-01-02 22:52:40.059 INFO  budynek2: sending demand to provider dostawca2 0.0
+2019-01-02 22:52:40.059 INFO  konsument5: need 0.0 medium from dostawca2
+2019-01-02 22:52:40.072 INFO  budynek4: sending medium to consumers
+2019-01-02 22:52:40.072 INFO  budynek4: medium sent to consumers
+2019-01-02 22:52:40.073 INFO  konsument7: received supply, current demand - 0.0
+2019-01-02 22:52:40.074 INFO  konsument7: need 0.0 medium from dostawca1
+2019-01-02 22:52:40.073 INFO  budynek4: sending demand to provider dostawca1 0.0
+2019-01-02 22:52:40.074 INFO  akumulator4: charging up - 0.49166666666666664
+2019-01-02 22:52:41.243 INFO  akumulator1: informing budynek1 of state and capacity
+2019-01-02 22:52:41.243 INFO  budynek1: current battery capacity - 0.6173192650046501 (SEND_MEDIUM)
+2019-01-02 22:52:41.289 INFO  akumulator4: informing budynek4 of state and capacity
+2019-01-02 22:52:41.289 INFO  budynek4: current battery capacity - 1.2096227526413752 (EXCESS_MEDIUM)
+2019-01-02 22:52:43.748 INFO  budynek1: preparing supply plan
+2019-01-02 22:52:43.749 INFO  budynek1: checking battery state
+2019-01-02 22:52:43.764 INFO  budynek3: preparing supply plan
+2019-01-02 22:52:43.779 INFO  budynek2: preparing supply plan
+2019-01-02 22:52:43.794 INFO  budynek4: preparing supply plan
+2019-01-02 22:52:43.795 INFO  budynek4: checking battery state
+2019-01-02 22:52:44.425 INFO  budynek1: received offer from konsument3 - dostawca2;13.0
+2019-01-02 22:52:44.441 INFO  budynek2: received offer from konsument5 - dostawca2;15.0
+2019-01-02 22:52:44.442 INFO  budynek4: received offer from konsument7 - dostawca1;17.0
+2019-01-02 22:52:44.442 INFO  budynek1: received offer from konsument1 - dostawca1;11.0
+2019-01-02 22:52:44.443 INFO  budynek2: received offer from konsument4 - dostawca2;14.0
+2019-01-02 22:52:44.443 INFO  budynek1: received offer from konsument2 - dostawca1;12.0
+2019-01-02 22:52:44.442 INFO  budynek4: checking battery state
+2019-01-02 22:52:44.443 INFO  budynek1: checking battery state
+2019-01-02 22:52:44.444 INFO  budynek1: starting negotiations
+2019-01-02 22:52:44.456 INFO  budynek3: received offer from konsument6 - dostawca1;16.0
+2019-01-02 22:52:44.459 INFO  budynek3: starting negotiations
+2019-01-02 22:52:44.461 INFO  budynek2: reserving medium for budynek1 - 1.0
+2019-01-02 22:52:44.462 INFO  budynek4: reserving medium for budynek1 - 63.0
+2019-01-02 22:52:44.472 INFO  akumulator1: reserving medium for my building
+2019-01-02 22:52:44.474 INFO  budynek1: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:44.483 INFO  budynek1: budynek2 send medium - 1.0, price - 0.6501208847259531
+2019-01-02 22:52:44.484 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:44.487 INFO  budynek1: budynek4 send medium - 63.0, price - 0.5199774291398589
+2019-01-02 22:52:44.487 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:44.490 INFO  budynek1: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:44.493 INFO  budynek1: akumulator1 send medium - 2.5, price - 0.0
+2019-01-02 22:52:44.493 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:44.494 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:44.495 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:44.496 INFO  budynek2: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:44.497 INFO  budynek4: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:44.498 INFO  budynek1: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:44.512 INFO  budynek4: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:44.513 INFO  budynek3: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:44.515 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:44.515 INFO  budynek1: selecting offers
+2019-01-02 22:52:44.516 INFO  akumulator1: budynek1 returned medium - 0.0
+2019-01-02 22:52:44.516 INFO  akumulator1: capacity increased by 0.0
+2019-01-02 22:52:44.518 INFO  budynek2: budynek1 reserved medium - 0.0
+2019-01-02 22:52:44.518 INFO  budynek2: budynek1 returned medium - 1.0
+2019-01-02 22:52:44.518 INFO  budynek3: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:44.519 INFO  budynek4: budynek1 reserved medium - 33.5
+2019-01-02 22:52:44.519 INFO  budynek4: budynek1 returned medium - 29.5
+2019-01-02 22:52:44.519 INFO  budynek4: checking battery state
+2019-01-02 22:52:44.522 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:44.523 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:44.523 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:44.524 INFO  budynek3: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:44.524 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:44.525 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:44.525 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:44.525 INFO  budynek3: selecting offers
+2019-01-02 22:52:47.761 INFO  budynek1: sending medium to consumers
+2019-01-02 22:52:47.763 INFO  budynek1: medium sent to consumers
+2019-01-02 22:52:47.763 INFO  konsument3: received supply, current demand - 1.0
+2019-01-02 22:52:47.763 INFO  konsument1: received supply, current demand - 0.0
+2019-01-02 22:52:47.763 INFO  konsument2: received supply, current demand - 0.0
+2019-01-02 22:52:47.764 INFO  konsument1: need 0.0 medium from dostawca1
+2019-01-02 22:52:47.764 INFO  akumulator1: charging up - 0.02
+2019-01-02 22:52:47.764 INFO  budynek1: sending demand to provider dostawca2 1.0
+2019-01-02 22:52:47.765 INFO  budynek1: sending demand to provider dostawca1 0.0
+2019-01-02 22:52:47.764 INFO  konsument2: need 0.0 medium from dostawca1
+2019-01-02 22:52:47.766 INFO  konsument3: battery price = 0.30058456395527244, provider price 0.5585577345782711
+2019-01-02 22:52:47.766 INFO  konsument3: getting shortage from battery
+2019-01-02 22:52:47.768 INFO  konsument3: need 0.0 medium from dostawca2
+2019-01-02 22:52:47.777 INFO  budynek3: sending medium to consumers
+2019-01-02 22:52:47.778 INFO  budynek3: medium sent to consumers
+2019-01-02 22:52:47.778 INFO  budynek3: sending demand to provider dostawca1 16.0
+2019-01-02 22:52:47.778 INFO  konsument6: received supply, current demand - 16.0
+2019-01-02 22:52:47.779 INFO  konsument6: need 16.0 medium from dostawca1
+2019-01-02 22:52:47.793 INFO  budynek2: sending medium to consumers
+2019-01-02 22:52:47.794 INFO  budynek2: medium sent to consumers
+2019-01-02 22:52:47.794 INFO  konsument4: received supply, current demand - 0.0
+2019-01-02 22:52:47.794 INFO  konsument5: received supply, current demand - 0.0
+2019-01-02 22:52:47.794 INFO  konsument4: need 0.0 medium from dostawca2
+2019-01-02 22:52:47.794 INFO  budynek2: sending demand to provider dostawca2 0.0
+2019-01-02 22:52:47.795 INFO  konsument5: need 0.0 medium from dostawca2
+2019-01-02 22:52:47.808 INFO  budynek4: sending medium to consumers
+2019-01-02 22:52:47.809 INFO  budynek4: medium sent to consumers
+2019-01-02 22:52:47.809 INFO  budynek4: sending demand to provider dostawca1 0.0
+2019-01-02 22:52:47.809 INFO  konsument7: received supply, current demand - 0.0
+2019-01-02 22:52:47.810 INFO  akumulator4: charging up - 0.49166666666666664
+2019-01-02 22:52:47.810 INFO  konsument7: need 0.0 medium from dostawca1
+2019-01-02 22:52:48.991 INFO  akumulator1: informing budynek1 of state and capacity
+2019-01-02 22:52:48.991 INFO  budynek1: current battery capacity - 0.5963016322522744 (SEND_MEDIUM)
+2019-01-02 22:52:49.021 INFO  akumulator4: informing budynek4 of state and capacity
+2019-01-02 22:52:49.021 INFO  budynek4: current battery capacity - 1.6946505973859978 (EXCESS_MEDIUM)
+2019-01-02 22:52:51.507 INFO  budynek1: preparing supply plan
+2019-01-02 22:52:51.507 INFO  budynek1: checking battery state
+2019-01-02 22:52:51.507 INFO  budynek3: preparing supply plan
+2019-01-02 22:52:51.522 INFO  budynek2: preparing supply plan
+2019-01-02 22:52:51.537 INFO  budynek4: preparing supply plan
+2019-01-02 22:52:51.538 INFO  budynek4: checking battery state
+2019-01-02 22:52:54.428 INFO  budynek1: received offer from konsument3 - dostawca2;13.0
+2019-01-02 22:52:54.444 INFO  budynek2: received offer from konsument5 - dostawca2;15.0
+2019-01-02 22:52:54.444 INFO  budynek2: received offer from konsument4 - dostawca2;14.0
+2019-01-02 22:52:54.461 INFO  budynek4: received offer from konsument7 - dostawca1;17.0
+2019-01-02 22:52:54.461 INFO  budynek4: checking battery state
+2019-01-02 22:52:54.461 INFO  budynek3: received offer from konsument6 - dostawca1;16.0
+2019-01-02 22:52:54.462 INFO  budynek1: received offer from konsument2 - dostawca1;12.0
+2019-01-02 22:52:54.462 INFO  budynek3: starting negotiations
+2019-01-02 22:52:54.479 INFO  budynek1: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:54.479 INFO  budynek4: reserving medium for budynek3 - 63.0
+2019-01-02 22:52:54.479 INFO  budynek2: reserving medium for budynek3 - 1.0
+2019-01-02 22:52:54.481 INFO  budynek1: received offer from konsument1 - dostawca1;11.0
+2019-01-02 22:52:54.481 INFO  budynek1: checking battery state
+2019-01-02 22:52:54.481 INFO  budynek1: starting negotiations
+2019-01-02 22:52:54.487 INFO  budynek3: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:54.487 INFO  budynek4: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:54.488 INFO  budynek3: budynek4 send medium - 63.0, price - 0.020091429893133422
+2019-01-02 22:52:54.489 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:54.489 INFO  budynek3: budynek2 send medium - 1.0, price - 0.9604606469737397
+2019-01-02 22:52:54.490 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:54.490 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:54.495 INFO  budynek3: reserving medium for budynek3 - 0.0
+2019-01-02 22:52:54.497 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:54.503 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:54.504 INFO  budynek2: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:54.505 INFO  budynek4: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:54.507 INFO  budynek3: negotiations in progress
+2019-01-02 22:52:54.508 INFO  budynek3: selecting offers
+2019-01-02 22:52:54.510 INFO  budynek2: budynek3 reserved medium - 0.0
+2019-01-02 22:52:54.511 INFO  budynek2: budynek3 returned medium - 1.0
+2019-01-02 22:52:54.511 INFO  budynek4: budynek3 reserved medium - 16.0
+2019-01-02 22:52:54.511 INFO  budynek4: budynek3 returned medium - 47.0
+2019-01-02 22:52:54.512 INFO  budynek4: checking battery state
+2019-01-02 22:52:54.512 INFO  budynek3: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:54.517 INFO  akumulator1: reserving medium for my building
+2019-01-02 22:52:54.518 INFO  budynek1: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:54.519 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:54.520 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:54.521 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:54.521 INFO  budynek1: reserving medium for budynek1 - 0.0
+2019-01-02 22:52:54.522 INFO  budynek1: akumulator1 send medium - 2.5, price - 0.0
+2019-01-02 22:52:54.522 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:54.522 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:54.523 INFO  budynek1: negotiations in progress
+2019-01-02 22:52:54.523 INFO  budynek1: selecting offers
+2019-01-02 22:52:54.524 INFO  akumulator1: budynek1 returned medium - 0.0
+2019-01-02 22:52:54.524 INFO  akumulator1: capacity increased by 0.0
+
+Process finished with exit code -1
